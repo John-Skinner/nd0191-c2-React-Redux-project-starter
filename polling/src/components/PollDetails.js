@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {checkedLoggedIn, getLoggedInTree} from "../utils/assureLoggedIn";
+import {saveUserAnswerToDB} from "../actions/receiveUsers";
 // this is helper function for routing/navigation
 const withRouter = (Component)=> {
     const ComponentWithRouterProp = (props) => {
@@ -12,6 +13,7 @@ const withRouter = (Component)=> {
     return ComponentWithRouterProp;
 }
 const PollDetails = (props)=>{
+    let nav = useNavigate();
     console.log(`PollDetails props:${JSON.stringify(props,null,2)}`);
     let loggedIn = checkedLoggedIn(props);
     if (!loggedIn) {
@@ -21,9 +23,13 @@ const PollDetails = (props)=>{
     let alreadyAnswered = thisUser.answers[id];
     const selectOne = (e)=>{
         console.log(`Selected one:` )
+        props.dispatch(saveUserAnswerToDB(authedUser.authedUser,id,'optionOne'));
+        nav('/');
     }
     const selectTwo = (e) => {
         console.log(`Selected two`);
+        props.dispatch(saveUserAnswerToDB(authedUser.authedUser,id,'optionTwo'));
+        nav('/');
     }
     let q1 = props.questions[id].optionOne.text;
     let q2 = props.questions[id].optionTwo.text;

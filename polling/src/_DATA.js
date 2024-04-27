@@ -1,5 +1,6 @@
 import logo from './logo.svg'
-import logo2 from './logo2.svg'
+import oshikanlu_zenobia from './oshikanlu_zenobia.svg'
+import tsamis_mike from './tsamis_mike.svg'
 let users = {
   sarahedo: {
     id: 'sarahedo',
@@ -29,7 +30,7 @@ let users = {
     id: 'mtsamis',
     password:'xyz123',
     name: 'Mike Tsamis',
-    avatarURL:logo,
+    avatarURL:tsamis_mike,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -41,7 +42,7 @@ let users = {
     id: 'zoshikanlu',
     password:'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: logo2,
+    avatarURL: oshikanlu_zenobia,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
@@ -186,9 +187,11 @@ export function _saveQuestion (question) {
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((resolve, reject) => {
+    console.log(`authedUser:'${authedUser}'`);
     if (!authedUser || !qid || !answer) {
       reject("Please provide authedUser, qid, and answer");
     }
+    console.log(`saveQA users before update:${JSON.stringify(users,null,2)}`)
 
     setTimeout(() => {
       users = {
@@ -201,6 +204,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
+      console.log(`saveQA updated users:${JSON.stringify(users,null,2)}`);
 
       questions = {
         ...questions,
@@ -212,8 +216,9 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
+      console.log(`saveqa questions:${JSON.stringify(questions,null,2)}`);
 
-      resolve(true)
+      resolve({users, questions})
     }, 500)
   })
 }

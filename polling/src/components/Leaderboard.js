@@ -57,7 +57,7 @@ function mapStateToProps(props) {
         leaderList.push(leaderItem);
     }
     leaderList.sort((a,b)=> {
-        return (a.numAsked+a.numAnswered) < (b.numAsked+b.numAnswered);
+        return (b.numAsked+b.numAnswered) - (a.numAsked+a.numAnswered);
     })
     return {
         leaderList,

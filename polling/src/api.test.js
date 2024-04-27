@@ -1,6 +1,6 @@
 import {_saveQuestion,_saveQuestionAnswer} from './_DATA'
 import logo from "./logo.svg";
-import logo2 from "./logo2.svg";
+import logo2 from "./oshikanlu_zenobia.svg";
 import users from './reducers/users'
 import {updateUser} from "./actions/receiveUsers";
 describe('apiTests',()=>{
@@ -34,9 +34,9 @@ describe('apiTests',()=>{
     });
     it('save question answer correct',async ()=>{
         try {
-            let saveQuestionAnswer = _saveQuestionAnswer({
-                authedUser:'john doe',
-                qid:'123',
+            let saveQuestionAnswer = await _saveQuestionAnswer({
+                authedUser:'sarahedo',
+                qid:'loxhs1bqm25b708cmbf3g',
                 answer:'optionOne'
             })
             expect(saveQuestionAnswer).toBeDefined();
@@ -124,7 +124,8 @@ describe('apiTests',()=>{
         let dispatchObj = updateUser('sarahedo',"loxhs1bqm25b708cmbf3g");
         let newStore = users(initialUsersState, dispatchObj);
         JSON.stringify(newStore,null,2);
-
+    });
+    it('answerQuestionUpdateReduce',()=> {
 
     })
 })

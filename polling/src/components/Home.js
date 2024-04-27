@@ -51,6 +51,7 @@ const Home = (props) => {
 function mapStateToProps(props) {
     console.dir(props);
     const {authedUser,questions} = props;
+    console.log()
     let mapped = {
         authedUser:authedUser,
         questions:questions
