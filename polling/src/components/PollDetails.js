@@ -2,7 +2,6 @@ import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {checkedLoggedIn, getLoggedInTree} from "../utils/assureLoggedIn";
 import {saveUserAnswerToDB} from "../actions/receiveUsers";
-import Login from "./Login";
 import Page404 from "./Page404";
 // this is helper function for routing/navigation
 const withRouter = (Component) =>
@@ -18,7 +17,6 @@ const withRouter = (Component) =>
 }
 const PollDetails = (props) =>
 {
-    let nav = useNavigate();
     let loggedIn = checkedLoggedIn(props);
     if (!loggedIn)
     {
@@ -33,18 +31,15 @@ const PollDetails = (props) =>
     if (alreadyAnswered)
     {
         console.log(`Already Answered:${alreadyAnswered}`);
-        let myAnswerCode = alreadyAnswered;
-        myAnswer = questions[id][myAnswerCode].text;
+        myAnswer = questions[id][alreadyAnswered].text;
     }
-    const selectOne = (e) =>
+    const selectOne = () =>
     {
         props.dispatch(saveUserAnswerToDB(authedUser.authedUser, id, 'optionOne'));
-        nav('/');
     }
-    const selectTwo = (e) =>
+    const selectTwo = () =>
     {
         props.dispatch(saveUserAnswerToDB(authedUser.authedUser, id, 'optionTwo'));
-        nav('/');
     }
     let q1 = props.questions[id].optionOne.text;
     let q2 = props.questions[id].optionTwo.text;
@@ -56,7 +51,6 @@ const PollDetails = (props) =>
     let pcntQ2 = numQ2 / (numQ1 + numQ2);
     let pcntQ1Str = Math.round(pcntQ1 * 100).toString(10) + '%';
     let pcntQ2Str = Math.round(pcntQ2 * 100).toString(10) + '%';
-    const isLoggedIn = checkedLoggedIn(props);
     if (alreadyAnswered)
     {
         return (
