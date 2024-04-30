@@ -9,7 +9,7 @@ import {createStore} from "redux";
 
 import reducer from './reducers'
 import middleware from "./middleware";
-import {RECEIVE_QUESTIONS} from "./actions/receiveQuestions";
+
 
 
 test('renders main app', async () =>

@@ -9,12 +9,10 @@ import LoadingBar from "react-redux-loading-bar";
 import Nav from './Nav';
 import Login from './Login'
 import {Route, Routes} from "react-router-dom";
-import PollHeadline from "./PollHeadline";
 import Leaderboard from "./Leaderboard";
 import PollDetails from "./PollDetails";
 import NewPoll from "./NewPoll";
 import HomeTabs from "./NewPollsTab";
-import Logout from "./Logout";
 
 const  App = (props)=> {
   useEffect(() =>

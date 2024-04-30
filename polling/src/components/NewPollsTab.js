@@ -1,4 +1,4 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import {connect} from "react-redux";
 import {checkedLoggedIn, getLoggedInTree} from "../utils/assureLoggedIn";
@@ -41,10 +41,9 @@ function mapStateToProps(props)
 
     const {authedUser, questions} = props;
 
-    let mapped = {
+    return {
         authedUser: authedUser,
         questions: questions
-    }
-    return mapped;
+    };
 }
 export default connect(mapStateToProps)(HomeTabs);
