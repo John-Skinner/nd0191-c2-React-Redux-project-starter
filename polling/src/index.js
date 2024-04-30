@@ -13,7 +13,6 @@ import {createDispatchHook} from "react-redux";
 
 const store=createStore(reducer,middleware);
 const urlChanged = (url) => {
-    console.error(`*******url changed to ${window.location.pathname}`)
 
 }
 

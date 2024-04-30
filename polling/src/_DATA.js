@@ -139,7 +139,6 @@ export function _getUsers () {
   return new Promise((resolve) => {
     setTimeout(() =>
     {
-      console.log('get users resolve now');
       resolve({...users});
     }, 1000)
   })
@@ -187,11 +186,9 @@ export function _saveQuestion (question) {
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((resolve, reject) => {
-    console.log(`authedUser:'${authedUser}'`);
     if (!authedUser || !qid || !answer) {
       reject("Please provide authedUser, qid, and answer");
     }
-    console.log(`saveQA users before update:${JSON.stringify(users,null,2)}`)
 
     setTimeout(() => {
       users = {
@@ -204,7 +201,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-      console.log(`saveQA updated users:${JSON.stringify(users,null,2)}`);
+
 
       questions = {
         ...questions,
@@ -216,7 +213,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-      console.log(`saveqa questions:${JSON.stringify(questions,null,2)}`);
+
 
       resolve({users, questions})
     }, 500)

@@ -1,27 +1,29 @@
-import {initial, initialData} from './actions/initial'
-import middleware from "./middleware";
-import { render, screen } from '@testing-library/react';
-import {createStore} from 'redux'
+
+import {render} from '@testing-library/react';
+
 import {Provider} from "react-redux";
-import reducer from './middleware'
-import App from "./components/App";
-import PollHeadline from "./components/PollHeadline";
+import {BrowserRouter} from "react-router-dom";
+import React from "react";
+import {createStore} from "redux";
+
+
+import reducer from './reducers'
+import middleware from "./middleware";
+import AppPollHeadline from "./AppPollHeadline";
 
 
 
+test('renders main app',()=> {
 
 
-describe('initial actions',()=>{
-    it('login',()=>{
-        const store = createStore(reducer,middleware);
-        render(
-            <Provider store={store}>
-                <App>
-                    <PollHeadline id='123'/>
-                </App>
+    const store=createStore(reducer,middleware);
 
-            </Provider>
-        )
-
-    })
+    const component = render(
+        <Provider store={store}>
+            <BrowserRouter>
+                <AppPollHeadline/>
+            </BrowserRouter>
+        </Provider>
+    );
+    expect(component).toMatchSnapshot();
 })

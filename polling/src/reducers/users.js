@@ -7,13 +7,11 @@ export default   function users(state = {}, action)
     switch (action.type)
     {
         case RECEIVE_USERS:
-            console.log(`receive users action content in:${JSON.stringify(action, null, 2)}`);
             return {
                 ...state,
                 ...action.users
             }
         case UPDATE_USER:
-            console.log(`update user with new poll question ${JSON.stringify(action, null, 2)}`);
             let newState = {
                 ...state
             }
@@ -26,13 +24,11 @@ export default   function users(state = {}, action)
 
         case UPDATE_USER_ANSWER:
         {
-            console.log(`update user answer authedUser:${JSON.stringify(action.user,null,2)}`);
-            console.log(`update user answer user:${JSON.stringify(action.user,null,2)}`);
+
             let newState = {
                 ...state,
             }
             newState[action.user.id] = {...action.user};
-            console.log(`new state:${JSON.stringify(newState,null,2)}`);
             return newState;
         }
 

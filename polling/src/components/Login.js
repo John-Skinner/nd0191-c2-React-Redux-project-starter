@@ -21,37 +21,17 @@ const Login = (props) =>
         wasRoutedByNavigator = ps.state.cameFromNav;
     }
 
-    console.log(`authedUser?${props.authedUser}`);
-    console.log(`was navigated to here:${wasRoutedByNavigator}`);
 
 
-    console.log('Login Component render start');
-
-    if (props.listOfUsers)
-    {
-        props.listOfUsers.forEach((id) =>
-        {
-            console.log(`user:${id}`)
-        })
-    } else
-    {
-        console.error('No Users loaded yet')
-    }
-    const choseUser = (e) =>
-    {
-        console.log(`chose user:${e.target.value}`)
-    }
     const checkUserPW = (e) =>
     {
         let selectElement = document.getElementById('useridID');
-        console.log(`selected user:${selectElement.value}`);
         let selectedUser = selectElement.value;
         let matchingPW = props.users[selectedUser].password;
         e.preventDefault();
-        console.error(`check password on ${pw} to match ${matchingPW}`);
         if (pw === matchingPW)
         {
-            console.log(`matched!`);
+
             props.dispatch(receiveQuestions())
             props.dispatch(acceptUser(selectedUser));
         } else
@@ -65,7 +45,6 @@ const Login = (props) =>
     const capturePW = (e) =>
     {
         e.preventDefault();
-        console.log(`pw value:${e.target.value}`);
         setPw(e.target.value);
     }
 
@@ -77,7 +56,7 @@ const Login = (props) =>
                     {userMessage}
                 </h2>
                 <div>
-                    <select name='userid' id='useridID' onChange={choseUser}>
+                    <select name='userid' id='useridID'>
                         {
                             props.listOfUsers.map((id) =>
                                 {
@@ -93,7 +72,7 @@ const Login = (props) =>
                         }
 
                     </select>
-                    <input type='text' id='pwText' value={pw} onChange={capturePW}/>
+                    <input type='text' id='pwText' data-testid='pwInput' value={pw} onChange={capturePW}/>
                     <button className='pwButtonClass' onClick={checkUserPW}>Submit</button>
                 </div>
 
@@ -109,13 +88,10 @@ const Login = (props) =>
 }
 const mapStateToProps = (props, ownProps) =>
 {
-    console.log('Login mapStateToProps:');
-    console.dir(props);
+
     let {users, authedUser} = props;
     let {cameFromNav} = ownProps;
-    console.log(`number of users:${Object.keys(users).length}`)
-    console.log(`came from nav:${cameFromNav}`)
-    console.log(`authedUser:${JSON.stringify(authedUser, null, 2)}`);
+
     let listOfUsers = [];
 
     for (let id in users)

@@ -13,7 +13,6 @@ const checkedLoggedIn = (props) =>
             }
         }
     }
-    console.log(`isLoggedIn:${loggedIn}`);
     return loggedIn;
 }
 const getLoggedInTree = () =>
@@ -26,8 +25,6 @@ const getLoggedInTree = () =>
 }
 const getLoginProps = (props) => {
     let {users, authedUser} = props;
-    console.log(`number of users:${Object.keys(users).length}`)
-    console.log(`authedUser:${JSON.stringify(authedUser, null, 2)}`);
     let listOfUsers = [];
 
     for (let id in users)

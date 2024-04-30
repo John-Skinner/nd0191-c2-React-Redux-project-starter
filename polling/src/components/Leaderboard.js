@@ -3,8 +3,7 @@ import {getLoggedInTree,checkedLoggedIn} from "../utils/assureLoggedIn";
 
 const Leaderboard = (props)=> {
     let {leaderList} = props;
-    console.log(`leaderList:${leaderList}`);
-    console.dir(props);
+
     const isLoggedIn = checkedLoggedIn(props);
     if (!isLoggedIn) {
         return getLoggedInTree(props);
@@ -15,10 +14,11 @@ const Leaderboard = (props)=> {
             <div>
                 <h2> Leaderboard</h2>
                 <table>
-                    {leaderList.map((item) =>
+                    <tbody>
+                    {leaderList.map((item, index) =>
                     {
                         return (
-                            <tr>
+                            <tr key={index.toString()}>
                                 <td>
                                     <img src={item.avatarURL} alt='pic' height='64' width='64'/>
                                 </td>
@@ -34,6 +34,7 @@ const Leaderboard = (props)=> {
                             </tr>
                         )
                     })}
+                    </tbody>
                 </table>
             </div>
         )
@@ -61,7 +62,7 @@ function mapStateToProps(props) {
     })
     return {
         leaderList,
-        authedUser:authedUser
+        authedUser
     }
 
 }

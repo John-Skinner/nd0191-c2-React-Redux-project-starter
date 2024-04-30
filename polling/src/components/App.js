@@ -17,13 +17,11 @@ import NewPoll from "./NewPoll";
 import Logout from "./Logout";
 
 const  App = (props)=> {
-  console.log(`App props:`);
-  console.dir(props);
   useEffect(() =>
   {
     props.dispatch(initialData())
   }, []);
-  console.log(`from App path:${window.location.pathname}`);
+
   return (
       <Fragment>
         <LoadingBar/>

@@ -36,7 +36,7 @@ function mapStateToProps(state, ownProps)
         console.error(`question ref not found:${questionId}`);
     }
 
-    console.log(`question id:${questionId}`);
+
     let mapped = {
         id: questionId,
         question: question,

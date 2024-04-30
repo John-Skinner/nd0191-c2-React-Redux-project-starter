@@ -17,11 +17,7 @@ const Home = (props) => {
     if (ps.state) {
         wasRoutedByNavigator = ps.state.cameFromNav;
     }
-    console.log(`wasRoutedByNavigator from Home:${wasRoutedByNavigator}`);
-    //if (!props.authedUser) {
-    //    navigate('/login');
-    //    return (<div></div>)
-    //}
+
     let loggedIn = checkedLoggedIn(props);
 
     if (loggedIn) {
@@ -49,9 +45,9 @@ const Home = (props) => {
 
 }
 function mapStateToProps(props) {
-    console.dir(props);
+
     const {authedUser,questions} = props;
-    console.log()
+
     let mapped = {
         authedUser:authedUser,
         questions:questions

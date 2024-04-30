@@ -12,9 +12,7 @@ const Nav = (props) => {
     }, []);
     const [currentUrl,setCurrentUrl] = useState('/');
 
-    console.log('registering for onPopState event');
     const urlChangedCB = (url) => {
-        console.error(`Nav *** url changed to ${window.location.pathname}`)
         props.dispatch(logout(url));
         setCurrentUrl(window.location.pathname);
 
@@ -29,16 +27,13 @@ const Nav = (props) => {
 
 
     const homeClicked = (e)=>{
-        console.log('home clicked');
         setCurrentUrl('/');
     }
 
     const leaderBoardClicked = (e)=>{
-        console.log('leaderboard clicked');
         setCurrentUrl('/leaderboard');
     }
     const newClicked = (e)=>{
-        console.log('new clicked');
         setCurrentUrl('/new');
     }
 

@@ -7,7 +7,6 @@ export default function questions(state={},action) {
                 ...state,
                 ...action.questions
             }
-            console.log(`questionsReducer:${JSON.stringify(newState,null,2)}`)
             return newState;
         case UPDATE_QUESTION:
         {
@@ -15,7 +14,6 @@ export default function questions(state={},action) {
                 ...state,
             }
             newState[action.question.id] = {...action.question};
-            console.log(`new question state:${JSON.stringify(newState,null,2)}`);
             return newState;
         }
         default:

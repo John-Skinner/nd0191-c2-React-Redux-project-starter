@@ -19,19 +19,18 @@ export function updateUser(user,pollQuestion) {
     }
 }
 export function updateUserAnswer(user) {
-    console.log(`updating store's user:${JSON.stringify(user,null,2)}`);
+
     return {
         type:UPDATE_USER_ANSWER,
         user,
     }
 }
 export function saveUserAnswerToDB(authedUser, qid, answer) {
-    console.log('start saveUserAnswer');
+
     return (dispatch) => {
-        console.log('saveUserAnswer ',authedUser);
+
         dispatch(showLoading());
         return saveQuestionAnswer({authedUser, qid, answer}).then((result)=>{
-            console.log('saveUserAnswer done');
             dispatch(updateUserAnswer(result.users[authedUser]));
             dispatch(updateQuestion(result.questions[qid]));
             dispatch(hideLoading());

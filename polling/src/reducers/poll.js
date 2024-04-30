@@ -7,7 +7,6 @@ export default function poll(state={},action) {
                 ...state,
                 ...action.question
             }
-            console.log(`newPollReducer:${newState}`)
             return newState;
         default:
             return state;
