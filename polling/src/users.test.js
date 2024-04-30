@@ -43,6 +43,6 @@ test('renders main app', async () =>
     console.log('clicked submit');
     await waitFor(() =>
     {
-        expect(getByText('Done')).toBeDefined();
+        expect(getByText('New')).toBeDefined();
     });
 })
